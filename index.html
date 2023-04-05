@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess The Number</title>
+    <style>
+        .box {
+            height: 300px;
+            width: 350px;
+            border: 2px solid black;
+            border-radius: 10px;
+            background-image: url(guess.jpg);
+            background-position: center;
+            object-fit: cover;
+            margin: auto;
+        }
+
+        .start {
+            font-size: 30px;
+            text-align: center;
+            color: white;
+            margin-top: 15px;
+        }
+
+        .enter {
+            display: flex;
+        }
+
+        .enter input {
+            height: 40px;
+            width: 250px;
+            border-radius: 10px;
+            text-align: center;
+            margin: auto;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: flex;
+        }
+
+        .btn button {
+            height: 30px;
+            width: 100px;
+            margin: auto;
+            margin-top: 30px;
+            border-radius: 10px;
+        }
+
+        #message {
+            width: 300px;
+            margin: auto;
+            text-align: center;
+            color: white;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        @media only screen and (max-width:650px) {
+            .box {
+                height: 600px;
+                width: 100%;
+                border: 2px solid black;
+                border-radius: 10px;
+                background-image: url(guess.jpg);
+                background-position: center;
+                object-fit: cover;
+                margin: auto;
+            }
+
+            .start {
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                margin-top: 100px;
+            }
+
+            .enter input {
+                height: 40px;
+                width: 250px;
+                border-radius: 10px;
+                text-align: center;
+                margin: auto;
+                margin-top: 50px;
+            }
+
+            .btn button {
+                height: 30px;
+                width: 100px;
+                margin: auto;
+                margin-top: 40px;
+                border-radius: 10px;
+            }
+
+            #message {
+                width: 300px;
+                margin: auto;
+                text-align: center;
+                color: white;
+                margin-top: 50px;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="start">Start Your game</div>
+        <div class="enter"><input id="num" type="text" placeholder="Guess the number"></div>
+        <div class="btn"><button id="btn">Enter</button></div>
+        <div id="message">Enter the number between 0 to 10</div>
+    </div>
+    <script>
+        const a = document.getElementById("num")
+        const b = Math.floor(Math.random() * 10);
+        const c = document.getElementById("btn")
+        const text = document.getElementById("message")
+        c.addEventListener('click', function () {
+            console.log(a.value)
+            if (a.value > b) {
+                console.log("greter")
+                text.textContent = "Guess number is greater";
+            }
+            else if (a.value < b) {
+                console.log("less")
+                text.textContent = "Guess number is lesser";
+            }
+            else {
+                console.log("you win")
+                text.textContent = "Correctly guess 🎉";
+                c.textContent = "Play again";
+                c.addEventListener('click', function () {
+                    location.reload();
+                    console.log("working")
+                })
+            }
+        });
+    </script>
+</body>
+</html>
